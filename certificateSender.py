@@ -50,8 +50,8 @@ def overlay_text_on_template(template_path, names, output_directory, email):
 
 
 def send_email(receiver_email, subject, message, attachment_path=None):
-    sender_email = "acm.khi@nu.edu.pk"
-    sender_password = "ypxlcdfoecnsobej"
+    sender_email = "email"
+    sender_password = "pass"
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
 
