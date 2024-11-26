@@ -12,6 +12,9 @@ from io import BytesIO
 from reportlab.lib.pagesizes import landscape
 from reportlab.pdfgen import canvas
 import random
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def overlay_text_on_template(template_path, names, output_directory, email):
     os.makedirs(output_directory, exist_ok=True)
@@ -50,8 +53,8 @@ def overlay_text_on_template(template_path, names, output_directory, email):
 
 
 def send_email(receiver_email, subject, message, attachment_path=None):
-    sender_email = "email"
-    sender_password = "pass"
+    sender_email = os.getenv("SENDER_EMAIL")
+    sender_password = os.getenv("SENDER_PASSWORD")
     smtp_server = "smtp.gmail.com"
     smtp_port = 465
 
@@ -96,7 +99,7 @@ xls = pd.ExcelFile(excel_file_path)
 sheet_names = xls.sheet_names
 print(sheet_names)
 certificate_template_path = (
-    r"CODERSCUP_CERTIFICATE.pdf"
+    rf"{os.getenv("CERTIFICATE_PATH")}"
 )
 
 output_directory = "./cert"
